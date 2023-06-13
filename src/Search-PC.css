@@ -1,0 +1,519 @@
+main {
+  width: 85%;
+  margin: 0 auto;
+  font-family: 'Roboto';
+}
+
+.search-wrapper {
+  display: flex;
+  color: #f6f6f6;
+}
+
+.search-input {
+  margin-top: 2rem;
+}
+
+.input-wrapper2 {
+  display: flex;
+  align-items: center;
+  width: 45%;
+}
+.first-search,
+.second-search {
+  background: #3c413f;
+  box-shadow: inset -1px -1px 0px rgba(241, 241, 245, 0.2);
+  padding: 1em 0em 1em 4em;
+  border: none;
+  flex-grow: 1;
+}
+
+.first-search {
+  border-radius: 10px 0px 0px 10px;
+  color: #f6f6f6;
+}
+
+.search-wrapper button {
+  width: 10%;
+  background: #ffd369;
+  color: #3c413f;
+  border-radius: 0px 10px 10px 0px;
+  border: none;
+  font-weight: 600;
+}
+
+.icon-wrapper1,
+.icon-wrapper2 {
+  position: absolute;
+  font-size: 1.2em;
+  color: #ffd369;
+  margin-left: 1.1em;
+}
+
+.main-container {
+  display: flex;
+  margin-top: 3rem;
+  justify-content: space-between;
+}
+
+.aside-container {
+  width: 23%;
+}
+
+.results-container {
+  width: 73%;
+}
+
+.newsLetter-container {
+  background: #44444f;
+  padding: 1.5em;
+  font-size: 0.875rem;
+}
+.newsLetter-container h7 {
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.newsLetter-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.newsLetter-container p {
+  width: 90%;
+}
+
+.email-input {
+  position: relative;
+}
+
+.write-email {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 0.7em;
+  border: none;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.icon-container {
+  font-size: 1.75rem;
+  color: black;
+  position: absolute;
+  top: 20%;
+  right: 3%;
+}
+
+.email-wrapper button {
+  background: #ffd369;
+  color: #3c413f;
+  border-radius: 0.5em;
+  border: none;
+  font-weight: 600;
+  padding: 0.3em 1.25em;
+  margin-top: 1em;
+}
+
+.email-wrapper {
+  margin-top: 1em;
+}
+
+.aside-flex-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  background-color: rgba(36, 36, 36, 255);
+}
+
+.Category-title,
+.price-title {
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.arrow-icon {
+  font-weight: 600;
+  font-size: 1rem;
+  position: absolute;
+  top: 1%;
+  right: 0%;
+}
+
+.price-title {
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+}
+
+.arrow-price {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.categories-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.checkbox-pc {
+  position: relative;
+  font-size: 0.9rem;
+}
+
+.checkbox-margin {
+  font-size: 0.8rem;
+  position: absolute;
+  left: 13%;
+}
+
+input[type='checkbox'] {
+  transform: scale(1.5);
+  background-color: black;
+  margin-left: 0.3em;
+}
+
+.square-23 {
+  font-size: 0.55rem;
+  border-radius: 5px;
+  position: absolute;
+  background-color: #f6f6f6;
+  right: 0%;
+  padding: 0.45em 0.55em;
+  color: black;
+  top: -12%;
+}
+
+.categories-checkbox {
+  margin-bottom: 1.2em;
+}
+
+.web-title {
+  font-weight: 600;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.arrowUp-icon1 {
+  font-weight: 600;
+  font-size: 1rem;
+  position: absolute;
+  top: 15%;
+  right: 0%;
+}
+.arrowUp-icon2 {
+  font-weight: 600;
+  font-size: 1rem;
+  position: absolute;
+  top: 1%;
+  right: 0%;
+}
+
+.flex-results-1 {
+  flex: 0 0 32%;
+  background: #3c413f;
+  border-radius: 0.8em;
+  padding: 1.5em;
+  color: white;
+  margin-bottom: 2em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.flex-results-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.showing-laptops-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5em;
+}
+
+.showing-laptops-container h2 {
+  flex: 0 0 32%;
+  font-size: 1.1rem;
+}
+
+.sort-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #696974;
+  font-size: 0.9rem;
+}
+
+.laptop-value {
+  color: #44444f;
+}
+
+.laptop-icon {
+  color: #92929d;
+  font-size: 1.2rem;
+}
+
+.icon-container-results {
+  display: flex;
+  justify-content: space-between;
+}
+
+.icon-container-results img {
+  width: 35%;
+}
+
+.laptop-name-container {
+  display: flex;
+  gap: 1em;
+}
+
+.laptop-name-container p {
+  font-weight: 600;
+}
+
+.laptop-name-container span {
+  color: #3dd598;
+  align-self: center;
+}
+.laptop-info {
+  font-size: 0.8rem;
+}
+
+.laptop-category-container {
+  display: flex;
+  gap: 1em;
+}
+
+.laptop-category-container p {
+  opacity: 0.8;
+  font-size: 0.7rem;
+  padding: 0.4em 0.6em;
+  background: rgba(241, 241, 245, 0.1);
+  border-radius: 3px;
+}
+
+.marque-stock-container {
+  display: flex;
+  font-size: 0.8rem;
+  gap: 0.5em;
+}
+
+.marque-stock-container p:first-child,
+span {
+  color: #fff2d2;
+  font-weight: 500;
+}
+
+.marque-stock-container span {
+  color: #fff2d2;
+  font-weight: 400;
+  font-size: 0.4rem;
+  align-self: center;
+}
+
+.laptop-info-button {
+  font-size: 0.7rem;
+  background: #ffd369;
+  border-radius: 0.6em;
+  padding: 0.5em 0.8em;
+  max-width: 50%;
+  border: none;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 1300px) {
+  .flex-results-1 {
+    flex: 0 0 48%;
+    background: #3c413f;
+    border-radius: 0.8em;
+    padding: 1.3em;
+    color: white;
+    margin-bottom: 1.5em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8em;
+  }
+
+  .footer-section-1 p,
+  .footer-section-3 p {
+    font-size: 0.7rem;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .input-wrapper2 {
+    width: 40%;
+    font-size: 0.9em;
+  }
+
+  .search-wrapper button {
+    width: 20%;
+  }
+
+  .main-container {
+    flex-direction: column;
+  }
+  .newsLetter-container {
+    display: none;
+  }
+  .aside-flex-container {
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 1.5em;
+  }
+
+  categories-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: relative;
+  }
+  .aside-container {
+    width: 100%;
+  }
+
+  .results-container {
+    width: 100%;
+  }
+
+  .categories-container {
+    width: 40%;
+  }
+  .price-choice-container {
+    width: 40%;
+  }
+  .web-marque-container {
+    display: none;
+  }
+  .checkbox-margin {
+    font-size: 0.75rem;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .input-wrapper2 {
+    font-size: 0.8em;
+  }
+
+  .aside-flex-container {
+    flex-direction: column;
+    justify-content: space-around;
+    margin-bottom: 1.5em;
+  }
+  .main-container {
+    flex-direction: row;
+  }
+
+  .categories-container {
+    width: 100%;
+  }
+  .price-choice-container {
+    width: 100%;
+  }
+
+  .aside-container {
+    width: 30%;
+  }
+
+  .results-container {
+    width: 65%;
+  }
+
+  .flex-results-container {
+    display: block;
+  }
+
+  .showing-laptops-container h2 {
+    font-size: 0.9rem;
+    width: 100%;
+    flex: 0 0 42%;
+  }
+
+  .showing-laptops-container {
+    margin-bottom: 1rem;
+  }
+
+  .checkbox-pc {
+    position: relative;
+    font-size: 0.6rem;
+  }
+  .checkbox-margin {
+    position: absolute;
+    left: 20%;
+    font-size: 0.65rem;
+  }
+}
+
+@media screen and (max-width: 602px) {
+  .checkbox-margin {
+    font-size: 0.9em;
+  }
+
+  .main-container {
+    flex-direction: column;
+    margin-top: 2.5em;
+  }
+
+  .aside-flex-container {
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 1.5em;
+  }
+
+  categories-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+  }
+  .aside-container {
+    width: 100%;
+  }
+
+  .results-container {
+    width: 100%;
+  }
+
+  .categories-container {
+    width: 40%;
+  }
+  .price-choice-container {
+    width: 40%;
+  }
+  .web-marque-container {
+    display: none;
+  }
+  .first-search,
+  .second-search {
+    box-shadow: inset -1px -1px 0px rgba(241, 241, 245, 0.2);
+    padding: 1em 0em 1em 3em;
+    border: none;
+    flex-grow: 1;
+    font-size: 0.7rem;
+  }
+
+  .search-wrapper button {
+    font-size: 0.7rem;
+    width: 14%;
+  }
+  .input-wrapper2 {
+    width: 43%;
+  }
+  .laptop-info {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 462px) {
+  .categories-container {
+    width: 45%;
+  }
+  .price-choice-container {
+    width: 45%;
+  }
+  .checkbox-pc {
+    font-size: 0.55rem;
+  }
+}
