@@ -1,4 +1,5 @@
 import { BiSearch } from 'react-icons/bi'
+import { RiMoneyDollarBoxLine } from 'react-icons/ri'
 
 const SearchInput = () => {
   return (

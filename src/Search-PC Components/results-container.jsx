@@ -6,7 +6,7 @@ const ResultsContainer = () => {
       <div className="showing-laptops-container">
         <h2>Showing 125 Laptop</h2>
         <div className="sort-container">
-          <p>sort by:</p>
+          <p>Sort by:</p>
           <span className="laptop-value">Best Value</span>
           <span className="laptop-icon">
             <RiArrowDownSFill />

@@ -120,7 +120,6 @@ main {
 .aside-flex-container {
   display: flex;
   flex-direction: column;
-  gap: 1.5em;
   background-color: rgba(36, 36, 36, 255);
 }
 
@@ -154,6 +153,7 @@ main {
   flex-direction: column;
   justify-content: space-between;
   position: relative;
+  margin-top: 2rem;
 }
 
 .checkbox-pc {
@@ -162,26 +162,62 @@ main {
 }
 
 .checkbox-margin {
-  font-size: 0.8rem;
   position: absolute;
   left: 13%;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 0.1px;
+
+  color: #f6f6f6;
 }
 
-input[type='checkbox'] {
-  transform: scale(1.5);
-  background-color: black;
-  margin-left: 0.3em;
+.checkbox-input {
+  display: none;
+}
+
+.custom-checkbox::after {
+  content: '✔';
+  font-size: 14px '';
+  position: absolute;
+  top: 43%;
+  left: 3%;
+  transform: translate(-50%, -50%);
+  visibility: hidden;
+  color: white;
+}
+
+.checkbox-input:checked + label .custom-checkbox::after {
+  visibility: visible;
+}
+
+/* Default state of the custom checkbox */
+.custom-checkbox {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: #242424;
+  border: 1px solid #3c413f;
+  margin-right: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.checkbox-input:checked + label .custom-checkbox {
+  background-color: #3dd598;
+  visibility: visible;
 }
 
 .square-23 {
-  font-size: 0.55rem;
+  font-size: 0.625rem;
   border-radius: 5px;
   position: absolute;
   background-color: #f6f6f6;
   right: 0%;
-  padding: 0.45em 0.55em;
+  padding: 0.35em 0.5em;
   color: black;
   top: -12%;
+  border: none;
 }
 
 .categories-checkbox {
@@ -212,13 +248,13 @@ input[type='checkbox'] {
 .flex-results-1 {
   flex: 0 0 32%;
   background: #3c413f;
-  border-radius: 0.8em;
-  padding: 1.5em;
+  border-radius: 30px;
   color: white;
   margin-bottom: 2em;
   display: flex;
   flex-direction: column;
-  gap: 1em;
+  gap: 0.8rem;
+  padding: 1rem 1.2rem;
 }
 
 .flex-results-container {
@@ -235,7 +271,16 @@ input[type='checkbox'] {
 
 .showing-laptops-container h2 {
   flex: 0 0 32%;
-  font-size: 1.1rem;
+
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 36px;
+  /* identical to box height, or 150% */
+  letter-spacing: 0.1px;
+
+  color: #f6f6f6;
 }
 
 .sort-container {
@@ -261,7 +306,7 @@ input[type='checkbox'] {
 }
 
 .icon-container-results img {
-  width: 35%;
+  width: 5.625rem;
 }
 
 .laptop-name-container {
@@ -270,40 +315,65 @@ input[type='checkbox'] {
 }
 
 .laptop-name-container p {
+  color: #f6f6f6;
+  font-size: 1rem;
+  font-family: Poppins;
   font-weight: 600;
+  letter-spacing: 0.00625rem;
 }
 
 .laptop-name-container span {
   color: #3dd598;
-  align-self: center;
+  font-size: 2rem;
 }
 .laptop-info {
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+  color: #fffcf3;
+  text-overflow: ellipsis;
+  whitespace: nowrap;
+  font-family: Roboto;
+  letter-spacing: 0.00625rem;
   font-size: 0.8rem;
 }
 
 .laptop-category-container {
   display: flex;
-  gap: 1em;
+  gap: 0.5rem;
+  position: relative;
 }
 
 .laptop-category-container p {
-  opacity: 0.8;
-  font-size: 0.7rem;
-  padding: 0.4em 0.6em;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  text-align: center;
+
+  color: rgba(255, 255, 255, 0.8);
+
+  padding: 0.3rem 0.7rem;
+  border-radius: 5px;
   background: rgba(241, 241, 245, 0.1);
-  border-radius: 3px;
 }
 
 .marque-stock-container {
   display: flex;
-  font-size: 0.8rem;
   gap: 0.5em;
+  color: #fff;
+  font-size: 0.875rem;
+  font-family: Roboto;
+  letter-spacing: 0.00625rem;
+  margin-bottom: 0.3rem;
 }
 
 .marque-stock-container p:first-child,
 span {
   color: #fff2d2;
+  font-size: 0.875rem;
+  font-family: Roboto;
   font-weight: 500;
+  letter-spacing: 0.00625rem;
 }
 
 .marque-stock-container span {
@@ -314,12 +384,16 @@ span {
 }
 
 .laptop-info-button {
-  font-size: 0.7rem;
+  width: 8.875rem;
+  height: 2.375rem;
+  flex-shrink: 0;
+  border-radius: 10px;
   background: #ffd369;
-  border-radius: 0.6em;
-  padding: 0.5em 0.8em;
-  max-width: 50%;
   border: none;
+  color: #0d120e;
+  text-align: center;
+  font-size: 0.75rem;
+  font-family: Poppins;
   font-weight: 600;
 }
 
@@ -333,7 +407,7 @@ span {
     margin-bottom: 1.5em;
     display: flex;
     flex-direction: column;
-    gap: 0.8em;
+    gap: 0.8rem;
   }
 
   .footer-section-1 p,
@@ -369,6 +443,7 @@ span {
     flex-direction: row;
     justify-content: space-between;
     position: relative;
+    margin-top: 0;
   }
   .aside-container {
     width: 100%;
@@ -387,12 +462,12 @@ span {
   .web-marque-container {
     display: none;
   }
-  .checkbox-margin {
-    font-size: 0.75rem;
-  }
 }
 
 @media screen and (max-width: 700px) {
+  main {
+    width: 93%;
+  }
   .input-wrapper2 {
     font-size: 0.8em;
   }
@@ -426,7 +501,6 @@ span {
   }
 
   .showing-laptops-container h2 {
-    font-size: 0.9rem;
     width: 100%;
     flex: 0 0 42%;
   }
@@ -437,12 +511,13 @@ span {
 
   .checkbox-pc {
     position: relative;
-    font-size: 0.6rem;
+    position: relative;
+    font-size: 0.85rem;
   }
   .checkbox-margin {
     position: absolute;
-    left: 20%;
-    font-size: 0.65rem;
+    left: 15%;
+    font-size: 0.75rem;
   }
 }
 
@@ -467,6 +542,7 @@ span {
     flex-direction: column;
     justify-content: space-between;
     position: relative;
+    margin-top: 0;
   }
   .aside-container {
     width: 100%;

@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 import Header from './Landing-Page-components/header'
-import BackgroundShapes from './Landing-Page-components/Background-shapes'
 import MainTitle from './Landing-Page-components/MainTitle'
 import SearchMenu from './Landing-Page-components/SearchMenu'
 import CarouselSection from './Landing-Page-components/carousel-section.jsx'
@@ -19,12 +18,17 @@ const App = () => {
           path="/*"
           element={
             <>
-              <Header />
-              <BackgroundShapes />
-              <MainTitle />
-              <SearchMenu />
-              <CarouselSection />
-              <Footer />
+              <section className="landing-page-container">
+                <Header />
+
+                <div className="main-landing-page">
+                  <div className="ellipse-circle"></div>
+                  <MainTitle />
+                  <SearchMenu />
+                  <CarouselSection />
+                </div>
+                <Footer />
+              </section>
             </>
           }
         />
