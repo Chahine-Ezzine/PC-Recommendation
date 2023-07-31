@@ -64,7 +64,6 @@ h6 {
 .toolbar {
   width: 1420px;
   margin-left: auto;
-  box-shadow: inset 0 0.0625rem 0 rgba(226, 226, 234, 0.2);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -209,6 +208,7 @@ h6 {
   outline: none;
   width: 3rem;
   display: inline;
+  margin-right: 0.3rem;
 }
 
 .money-flex span:nth-of-type(2) {
@@ -222,6 +222,8 @@ h6 {
 .money-flex span:nth-of-type(4) {
   color: white;
   font-weight: 400;
+  margin-left: -0.4rem;
+  margin-top: 1.5px;
 }
 
 .price-range {
@@ -272,8 +274,9 @@ h6 {
 }
 .money-flex span:first-of-type {
   position: absolute;
-  left: -9%;
+  left: -11%;
   top: 21%;
+  font-size: 1rem;
 }
 
 .horizontal-slider {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import categories from '../data'
-import { HiOutlineChevronDown, HiOutlineChevronUp } from 'react-icons/hi' // Import the upward pointing chevron
+import { HiOutlineChevronDown, HiOutlineChevronUp } from 'react-icons/hi'
 
 const CategoriesCheckbox = () => {
   const [showCheckboxes, setShowCheckboxes] = useState(false)
@@ -13,7 +13,6 @@ const CategoriesCheckbox = () => {
           className="arrow-icon"
           onClick={() => setShowCheckboxes(!showCheckboxes)}
         >
-          {/* Conditionally render the arrow icons */}
           {showCheckboxes ? <HiOutlineChevronDown /> : <HiOutlineChevronUp />}
         </div>
       </div>

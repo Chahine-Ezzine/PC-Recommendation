@@ -1,39 +1,20 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-
-import Header from './Landing-Page-components/header'
-import MainTitle from './Landing-Page-components/MainTitle'
-import SearchMenu from './Landing-Page-components/SearchMenu'
-import CarouselSection from './Landing-Page-components/carousel-section.jsx'
-import Footer from './Landing-Page-components/Footer.jsx'
-import SearchPage from './Search-PC'
 import LaptopDetail from './LaptopDetail'
-
+import SearchPage from './Search-PC'
+import HomePage from './Landing-Page-components/HomePage'
+import { LaptopProvider } from './LaptopContext'
 const App = () => {
   return (
     <Router>
-      <Routes>
-        <Route path="/laptop-detail" element={<LaptopDetail />} />
-        <Route path="/search" element={<SearchPage />} />
-        <Route
-          path="/*"
-          element={
-            <>
-              <section className="landing-page-container">
-                <Header />
-
-                <div className="main-landing-page">
-                  <div className="ellipse-circle"></div>
-                  <MainTitle />
-                  <SearchMenu />
-                  <CarouselSection />
-                </div>
-                <Footer />
-              </section>
-            </>
-          }
-        />
-      </Routes>
+      <LaptopProvider>
+        <Routes>
+          <Route path="/laptop-detail" element={<LaptopDetail />} />
+          <Route path="/search" element={<SearchPage />} />
+          <Route path="/*" element={<HomePage />} />
+        </Routes>
+      </LaptopProvider>
     </Router>
   )
 }
+
 export default App

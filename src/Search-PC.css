@@ -226,7 +226,7 @@ main {
 
 .web-title {
   font-weight: 600;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   position: relative;
 }
 
@@ -248,7 +248,7 @@ main {
 .flex-results-1 {
   flex: 0 0 32%;
   background: #3c413f;
-  border-radius: 30px;
+  border-radius: 0.625rem;
   color: white;
   margin-bottom: 2em;
   display: flex;
@@ -289,6 +289,17 @@ main {
   gap: 10px;
   color: #696974;
   font-size: 0.9rem;
+}
+
+.sort-container p {
+  color: #92929d;
+  text-align: right;
+  font-family: Roboto;
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.00625rem;
 }
 
 .laptop-value {
@@ -395,6 +406,46 @@ span {
   font-size: 0.75rem;
   font-family: Poppins;
   font-weight: 600;
+}
+.sort-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.sort-select {
+  color: #44444f;
+  font-family: Roboto;
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.00625rem;
+  background-color: #242424;
+  border: none;
+  appearance: none; /* Removes default dropdown arrow in most modern browsers */
+  margin-right: -1.5rem;
+  -webkit-appearance: none; /* Removes default dropdown arrow for older webkit browsers */
+  -moz-appearance: none; /* Removes default dropdown arrow for Firefox */
+}
+.sort-select p {
+  color: #92929d;
+  text-align: right;
+  font-family: Roboto;
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.00625rem;
+}
+
+.custom-arrow-icon {
+  position: absolute;
+  right: 0%;
+  top: 46%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #92929d;
+  font-size: 1.5rem;
 }
 
 @media screen and (max-width: 1300px) {

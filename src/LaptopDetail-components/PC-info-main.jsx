@@ -3,19 +3,41 @@ import { BiBookmark } from 'react-icons/bi'
 import { FiShare2 } from 'react-icons/fi'
 import { TbPointFilled } from 'react-icons/tb'
 import { AiOutlineFileDone } from 'react-icons/ai'
-import FicheTechnique from './FicheTechnique'
+import React, { useContext } from 'react'
+import { LaptopContext } from '../LaptopContext'
 
 const PCinfoMain = () => {
+  const { state } = useContext(LaptopContext)
+  const laptop = state.selectedLaptop
+
+  const ficheTechniqueData = [
+    { label: 'Marque', value: laptop.brand },
+    { label: 'Processeur', value: laptop.CPU },
+    { label: 'Mémoire', value: laptop.Ram },
+    {
+      label: 'fréquence processeur',
+      value:
+        '3,3 GHz up to 4.5 GHz Turbo max, 16 Mo de mémoire cache, Hexa-Core',
+    },
+    { label: 'Résolution Ecran', value: laptop.Resolution },
+    { label: 'Type Processeur', value: 'Dual Core' },
+    { label: 'Carte Graphique', value: laptop.GPU },
+    { label: 'Garantie', value: '1ans' },
+  ]
+
+  if (!laptop) {
+    return <div>No Laptop Data</div>
+  }
+
   return (
     <>
-      {' '}
       <div className="flex-details-1-price">
-        <p className="PC-detail-price">959,000</p>
+        <p className="PC-detail-price">{laptop.Price}</p>
         <p className="PC-detail-currency">TND</p>
       </div>
       <img src={imageGroup} className="images-detail-1" />
       <div className="flex-details-1-name-icon">
-        <p className="flex-details-1-name">Dell Vostro 3400</p>
+        <p className="flex-details-1-name">{laptop.Name}</p>
         <div className="flex-details-1-icon">
           <span className="PC-detail-icon1">
             <BiBookmark />
@@ -31,7 +53,7 @@ const PCinfoMain = () => {
           <p className="PC-detail-marque-point">
             <TbPointFilled />
           </p>
-          <p className="PC-detail-stock">En Stock</p>
+          <p className="PC-detail-stock">{laptop.Stock}</p>
           <p className="PC-detail-stock-icon">
             <AiOutlineFileDone />
           </p>
@@ -48,35 +70,36 @@ const PCinfoMain = () => {
       <div className="flex-details-1-pc-features">
         <div className="flex-pc-features1">
           <p>Ecran</p>
-          <p className="bold-features">14 Pouces HD</p>
+          <p className="bold-features">{laptop.Display}</p>
         </div>
         <div className="flex-pc-features2">
           <p>Processeur</p>
-          <p className="bold-features">i3-1115G4</p>
+          <p className="bold-features">{laptop.CPU}</p>
         </div>
         <div className="flex-pc-features3">
           <p>Mémoire RAM</p>
-          <p className="bold-features">4 Go</p>
+          <p className="bold-features">{laptop.Ram}</p>
         </div>
         <div className="flex-pc-features4">
           <p>Disque dur</p>
-          <p className="bold-features">1 To HDD</p>
+          <p className="bold-features">{laptop.Storage}</p>
         </div>
       </div>
       <div className="flex-details-1-overview">
         <p className="overview-title">Overview </p>
-        <p className="overview-content">
-          Écran 14" HD - Processeur: Intel Core i3-1115G4 (3.00 GHz up to 4,10
-          GHz Turbo max , 6 Mo de mémoire cache, Dual-Core) - Système
-          d'exploitation: FreeDos - Mémoire RAM: 4 Go - Disque dur: 1 To HDD -
-          Carte graphique: Intel HD Graphics avec WiFi, Bluetooth, 1x USB 2.0
-          Type-A, 2x USB 3.2 Gen 1 Type-A, 1x HDMI 1.4,1x RJ-45, 1 prise jack
-          pour casque 3.5 mm - Couleur: Noir - Garantie: 1 an
-        </p>
+        <p className="overview-content">{laptop.Description}</p>
       </div>
       <div className="flex-details-1-fiche-Technique">
         <p className="fiche-Technique-Name">Fiche Technique</p>
-        <FicheTechnique />
+
+        {ficheTechniqueData.map((item) => (
+          <div key={item.label} className="pc-description-flex">
+            <p className="pc-description-circle"></p>
+            <p>
+              {item.label}: {item.value}
+            </p>
+          </div>
+        ))}
       </div>
       <div className="flex-details-1-Interested-btn">
         <p className="flex-details-1-Interested">

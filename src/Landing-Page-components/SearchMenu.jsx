@@ -1,88 +1,139 @@
+import * as React from 'react'
+import Box from '@mui/material/Box'
+import Slider from '@mui/material/Slider'
+import { styled } from '@mui/system'
 import { RiMoneyDollarBoxLine } from 'react-icons/ri'
-import { useState, useEffect } from 'react'
 
-const SearchMenu = () => {
-  const [minBudget, setMinBudget] = useState(500)
-  const [maxBudget, setMaxBudget] = useState(3850)
-  const [budget, setBudget] = useState('500 TND - 3850 TND')
+const StyledSlider = styled(Slider)(({ theme }) => ({
+  color: '#52af77',
+  height: 8,
+  padding: '13px 0',
+  '& .MuiSlider-thumb': {
+    width: '1.25rem',
+    height: '1.25rem',
+    background: '#FFD369',
+    '&:focus, &:hover, &.Mui-active': {
+      boxShadow: 'inherit',
+    },
+  },
+  '& .MuiSlider-track': {
+    height: 6,
+    background: '#FFD369',
+    border: 'none !important',
+  },
+  '& .MuiSlider-rail': {
+    height: 4,
+    borderRadius: 12,
+    background: '#FFD369',
+  },
+  '& .MuiSlider-mark': {
+    backgroundColor: 'black',
+  },
+  '& .zeroLabel': {
+    color: '#FFFFFF',
+    fontWeight: 'bold',
+    fontFamily: 'Roboto',
+    fontSize: 14,
+  },
+  '& .sevenKLabel': {
+    color: 'rgba(255, 255, 255, 0.7)',
+    fontWeight: 'bold',
+    fontFamily: 'Roboto',
+    fontSize: 14,
+  },
+}))
 
-  useEffect(() => {
-    setBudget(`${minBudget} TND - ${maxBudget} TND`)
-  }, [minBudget, maxBudget])
+const SearchMenu = ({ setValues }) => {
+  const [localValues, setLocalValues] = React.useState([500, 3850])
+  const localValuesRef = React.useRef(localValues)
+  const minDistance = 500
 
-  const handleMinBudgetChange = (e) => {
-    const newValue = e.target.value
-    if (!isNaN(newValue)) {
-      setMinBudget(newValue)
+  const handleChange = (event, newValue, activeThumb) => {
+    if (!Array.isArray(newValue)) {
+      return
     }
+
+    if (activeThumb === 0) {
+      setLocalValues([
+        Math.min(newValue[0], localValues[1] - minDistance),
+        localValues[1],
+      ])
+    } else {
+      setLocalValues([
+        localValues[0],
+        Math.max(newValue[1], localValues[0] + minDistance),
+      ])
+    }
+    console.log('New value from slider:', newValue)
   }
 
-  const handleMaxBudgetChange = (e) => {
-    const newValue = e.target.value
-    if (!isNaN(newValue)) {
-      setMaxBudget(newValue)
-    }
+  const marks = [
+    { value: 0, label: <span className="zeroLabel">0</span> },
+    { value: 7000, label: <span className="sevenKLabel">7000</span> },
+  ]
+  for (let i = 1000; i < 7000; i += 1000) {
+    let mark = { value: i }
+    marks.push(mark)
   }
+  React.useEffect(() => {
+    // Update the ref
+    localValuesRef.current = localValues
+    console.log('Running useEffect with localValues:', localValues)
+
+    if (typeof setValues === 'function') {
+      console.log(
+        'Invoking setValues from SearchMenu with:',
+        localValuesRef.current
+      )
+      setValues(localValuesRef.current)
+    }
+  }, [localValues, setValues])
 
   return (
-    <>
-      <section className="search-menu">
-        <h3>What is your budget?</h3>
-        <div className="price-range">
-          <div className="money-flex">
-            <span>
-              <RiMoneyDollarBoxLine />
-            </span>
-            <input
-              type="text"
-              value={minBudget}
-              onChange={handleMinBudgetChange}
-              className="budget-input"
-            />
-            <span>TND</span>
-            <span> - </span>
-            <input
-              type="text"
-              value={maxBudget}
-              onChange={handleMaxBudgetChange}
-              className="budget-input"
-            />
-            <span> TND</span>
-          </div>
-
-          <div className="range-slider">
-            <div className="horizontal-slider">
-              <div className="points-container">
-                <p></p>
-                <p></p>
-                <p></p>
-                <p></p>
-                <p></p>
-                <p></p>
-                <p></p>
-              </div>
-              <div className="slider-circle-1">
-                <div className="tooltip-1">
-                  20
-                  <div className="arrow-1"></div>
-                </div>
-              </div>
-              <div className="slider-circle-2">
-                <div className="tooltip-2">
-                  66 <div className="arrow-2"></div>
-                </div>
-              </div>
-              <div className="small-horizontal-slider"></div>
-            </div>
-
-            <div className="prices">
-              <p className="min-price">12</p>
-              <p className="max-price">20</p>
-            </div>
-          </div>
+    <section className="search-menu">
+      <h3>What is your budget?</h3>
+      <div className="price-range">
+        <div className="money-flex">
+          <span>
+            <RiMoneyDollarBoxLine />
+          </span>
+          <input
+            type="text"
+            value={localValues[0]}
+            onChange={(e) =>
+              setLocalValues([Number(e.target.value), localValues[1]])
+            }
+            className="budget-input"
+          />
+          <span>TND</span>
+          <span> - </span>
+          <input
+            type="text"
+            value={localValues[1]}
+            onChange={(e) =>
+              setLocalValues([localValues[0], Number(e.target.value)])
+            }
+            className="budget-input"
+          />
+          <span> TND</span>
         </div>
-      </section>
-    </>
+
+        <Box sx={{ width: '100%', marginTop: 2, marginBottom: 2 }}>
+          <StyledSlider
+            className="mySlider"
+            getAriaLabel={() => 'Minimum distance'}
+            value={localValues}
+            onChange={handleChange}
+            valueLabelDisplay="auto"
+            getAriaValueText={(value) => `${value} TND`}
+            marks={marks}
+            min={0}
+            max={7000}
+          />
+        </Box>
+      </div>
+    </section>
   )
 }
+
 export default SearchMenu

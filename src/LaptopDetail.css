@@ -61,6 +61,14 @@
 .flex-details-1-name {
   font-size: 1.625rem;
   font-weight: 600;
+  width: 75%;
+  color: #f1f1f5;
+  font-family: Poppins;
+  font-size: 1.625rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 2.25rem;
+  letter-spacing: 0.00625rem;
 }
 .PC-detail-icon1,
 .PC-detail-icon2 {
@@ -168,9 +176,6 @@
 .fiche-Technique-Name {
   font-weight: 600;
 }
-.pc-description-name {
-  font-size: 0.875rem;
-}
 
 .pc-description-circle {
   width: 1rem;
@@ -187,6 +192,11 @@
   display: flex;
   gap: 0.7em;
 }
+
+.pc-description-flex p {
+  font-size: 0.875rem;
+}
+
 .flex-details-2-info {
   display: flex;
   justify-content: space-between;

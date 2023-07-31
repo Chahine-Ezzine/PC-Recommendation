@@ -6,11 +6,11 @@ import background from '../../public/images/background-img.png'
 import { MdOutlineArrowForwardIos } from 'react-icons/md'
 import { MdOutlineArrowBackIosNew } from 'react-icons/md'
 
-const CarouselSection = () => {
-  const navigate = useNavigate()
-  const navigateToSearchPage = () => {
-    navigate('/search')
-  }
+const CarouselSection = ({ navigateToSearchPage }) => {
+  // const navigate = useNavigate()
+  // const navigateToSearchPage = () => {
+  //   navigate('/search')
+  // }
 
   let initialCarouselItems = [
     { image: img1, alt: 'computer type', text: 'Gaming' },
@@ -66,7 +66,6 @@ const CarouselSection = () => {
               <MdOutlineArrowBackIosNew />
             </button>
             {currentImages.map((item, index) => {
-              // Class for each item
               const itemClass = `carousel-item item-${index + 1}`
 
               return (
