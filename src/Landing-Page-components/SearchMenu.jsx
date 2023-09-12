@@ -111,7 +111,7 @@ const SearchMenu = ({ setValues = () => {} }) => {
           <span> TND</span>
         </div>
 
-        <Box sx={{ width: '100%', marginTop: 2, marginBottom: 2 }}>
+        <Box sx={{ width: '100%', marginTop: 4, marginBottom: 2 }}>
           <StyledSlider
             className="mySlider"
             getAriaLabel={() => 'Minimum distance'}

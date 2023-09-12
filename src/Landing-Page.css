@@ -434,10 +434,13 @@ h6 {
   position: relative;
   width: 92%;
 }
-img.blur {
-  filter: blur(3px);
+.carousel-item img.blur {
+  filter: blur(3px); /* Adjust blur value as needed */
 }
 
+.carousel-item img.blur + p {
+  top: 50%;
+}
 .carousel-images {
   display: flex;
   align-items: center;
@@ -566,6 +569,17 @@ carousel-item4 {
   font-family: Poppins;
   font-weight: 700;
   letter-spacing: 0.06875rem;
+}
+
+.search-btn:hover {
+  background: #ffecb3; /* This is a lighter version of #ffd369 */
+  cursor: pointer;
+}
+
+/* Add active (click) effect */
+.search-btn:active {
+  background: #ffe6a6; /* This is slightly darker than the hover effect for a pressed effect */
+  cursor: pointer;
 }
 
 .background-shapes {

@@ -34,8 +34,8 @@ const CategoriesCheckbox = ({ setSelectedCategory, selectedCategory }) => {
           <div className="categories-checkbox" key={index}>
             <div className="checkbox-pc">
               <input
-                type="radio" // Change checkbox to radio
-                name="category" // Add a name to group radios
+                type="radio"
+                name="category"
                 id={`checkbox-${index}`}
                 className="checkbox-input"
                 checked={searchData.text === catItem}

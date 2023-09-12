@@ -173,11 +173,10 @@ main {
 
 .checkbox-margin {
   position: absolute;
-  left: 13%;
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 13px;
   letter-spacing: 0.1px;
 
   color: #f6f6f6;
@@ -281,7 +280,7 @@ main {
 
 .showing-laptops-container h2 {
   flex: 0 0 62%;
-
+  margin-left: 1rem;
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 600;
@@ -417,7 +416,16 @@ span {
   font-size: 0.75rem;
   font-family: Poppins;
   font-weight: 600;
+  cursor: pointer;
 }
+
+.laptop-info-button:hover {
+  background: #ffecb3;
+}
+.laptop-info-button:active {
+  background: #ffe6a6;
+}
+
 .sort-dropdown {
   position: relative;
   display: inline-block;
@@ -569,10 +577,18 @@ span {
     flex-direction: column;
     gap: 0.8rem;
   }
+  .marque-stock-container p:first-child,
+  span {
+    align-self: center;
+  }
 
   .footer-section-1 p,
   .footer-section-3 p {
     font-size: 0.7rem;
+  }
+
+  .custom-checkbox::after {
+    left: 4.7%;
   }
 }
 
@@ -591,6 +607,10 @@ span {
   .input-wrapper2 {
     width: 40%;
     font-size: 0.9em;
+  }
+
+  .custom-checkbox::after {
+    left: 3.5%;
   }
 
   .search-wrapper button {
@@ -633,12 +653,26 @@ span {
   .web-marque-container {
     display: none;
   }
+
+  .aside-flex-container {
+    margin-left: 1.2rem;
+  }
 }
 
 @media screen and (max-width: 700px) {
+  .marque-stock-container p:first-child,
+  span {
+    align-self: center;
+  }
+
   .main-search {
     width: 93%;
   }
+
+  .custom-checkbox::after {
+    left: 5%;
+  }
+
   .input-wrapper2 {
     font-size: 0.8em;
   }
@@ -647,7 +681,7 @@ span {
   }
 
   .sort-select {
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
 
   .sort-container p {
@@ -671,11 +705,15 @@ span {
   }
 
   .aside-container {
-    width: 30%;
+    width: 35%;
   }
 
   .results-container {
-    width: 65%;
+    width: 62%;
+  }
+
+  .sort-container p {
+    font-size: 0.8rem;
   }
 
   .flex-results-container {
@@ -699,13 +737,21 @@ span {
   .checkbox-margin {
     position: absolute;
     left: 15%;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
+  }
+
+  .showing-laptops-container h2 {
+    margin-left: 0rem;
+  }
+  .aside-container {
+    margin-top: 0.6rem;
+    margin-left: -1rem;
   }
 }
 
 @media screen and (max-width: 602px) {
   .checkbox-margin {
-    font-size: 0.9em;
+    font-size: 0.7rem;
   }
 
   .main-container {
@@ -772,6 +818,9 @@ span {
     width: 45%;
   }
   .checkbox-pc {
+    font-size: 0.65rem;
+  }
+  .checkbox-margin {
     font-size: 0.65rem;
   }
 }
