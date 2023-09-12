@@ -10,36 +10,31 @@ const Footer = () => {
         <div className="footer-section">
           <h3 className="footer-main-title">PC Recommendation</h3>
 
-          <div className="footer-section-1">
+          <div className="footer-branding">
             <h3>PC Recommendation</h3>
 
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             <div className="footer-icons">
               <div className="icons-wrap">
-                <div className="icon-footer">
+                <a href="#" aria-label="Twitter" className="icon-footer">
                   <FaTwitter />
-                </div>
-                <div className="icon-footer">
+                </a>
+                <a href="#" aria-label="Facebook" className="icon-footer">
                   <BsFacebook />
-                </div>
-
-                <div className="icon-footer">
+                </a>
+                <a href="#" aria-label="Telegram" className="icon-footer">
                   <FaTelegramPlane />
-                </div>
-
-                <div className="icon-footer">
+                </a>
+                <a href="#" aria-label="YouTube" className="icon-footer">
                   <FaYoutube />
-                </div>
+                </a>
               </div>
-              <p className="copyright-icon">
-                Copyright © 2022 Envast. All rights reserved.
-              </p>
             </div>
             <p className="footer-copyright">
               Copyright © 2022 Envast. All rights reserved.
             </p>
           </div>
-          <div className="footer-section-2">
+          <div className="footer-resources">
             <div className="footer-links">
               <p className="footer-resource">Resource</p>
 
@@ -60,8 +55,12 @@ const Footer = () => {
               </p>
               <form action="#">
                 <div className="input-wrapper">
-                  <input type="email" placeholder="Info@yourgmail.com" />
-                  <button type="submit">
+                  <input
+                    type="email"
+                    placeholder="Info@yourgmail.com"
+                    aria-label="Email for newsletter subscription"
+                  />
+                  <button type="submit" aria-label="Subscribe to newsletter">
                     <AiOutlineSend />
                   </button>
                 </div>

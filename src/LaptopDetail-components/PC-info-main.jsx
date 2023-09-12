@@ -10,6 +10,9 @@ const PCinfoMain = () => {
   const { state } = useContext(LaptopContext)
   const laptop = state.selectedLaptop
 
+  if (!laptop) {
+    return <div>No Laptop Data</div>
+  }
   const ficheTechniqueData = [
     { label: 'Marque', value: laptop.brand },
     { label: 'Processeur', value: laptop.CPU },
@@ -24,10 +27,6 @@ const PCinfoMain = () => {
     { label: 'Carte Graphique', value: laptop.GPU },
     { label: 'Garantie', value: '1ans' },
   ]
-
-  if (!laptop) {
-    return <div>No Laptop Data</div>
-  }
 
   return (
     <>

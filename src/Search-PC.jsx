@@ -5,15 +5,25 @@ import AsidePc from './Search-PC Components/Aside-PC'
 import ResultsContainer from './Search-PC Components/results-container'
 import PcResults from './Search-PC Components/PC-results'
 import SearchInput from './Search-PC Components/Search-Input'
+import { DecorativeSVG } from './Search-PC Components/DecorativeSVG'
+import { useState } from 'react'
+import { SearchProvider, useSearch } from './Search-PC Components/SearchContext' // Added useSearch import here
 
 const SearchPc = () => {
+  const [selectedCategory, setSelectedCategory] = useState('')
+  const { searchData, setSearchData } = useSearch()
+
   return (
-    <>
-      <main>
-        <SearchInput />
+    <main>
+      <Header />
+      <div className="main-search">
+        <SearchInput selectedCategory={selectedCategory} />
 
         <div className="main-container">
-          <AsidePc />
+          <AsidePc
+            setSelectedCategory={setSelectedCategory}
+            selectedCategory={selectedCategory}
+          />
           <div className="results-container">
             <ResultsContainer />
             <div className="flex-results-container">
@@ -21,8 +31,10 @@ const SearchPc = () => {
             </div>
           </div>
         </div>
-      </main>
-    </>
+        <DecorativeSVG />
+      </div>
+      <Footer />
+    </main>
   )
 }
 export default SearchPc

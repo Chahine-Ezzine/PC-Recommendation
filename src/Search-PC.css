@@ -1,7 +1,11 @@
-main {
+.main-search {
   width: 85%;
   margin: 0 auto;
   font-family: 'Roboto';
+  position: relative;
+}
+main {
+  overflow: hidden;
 }
 
 .search-wrapper {
@@ -11,6 +15,7 @@ main {
 
 .search-input {
   margin-top: 2rem;
+  position: relative;
 }
 
 .input-wrapper2 {
@@ -30,6 +35,9 @@ main {
 .first-search {
   border-radius: 10px 0px 0px 10px;
   color: #f6f6f6;
+}
+.second-search {
+  color: #b5b5be;
 }
 
 .search-wrapper button {
@@ -67,8 +75,9 @@ main {
   background: #44444f;
   padding: 1.5em;
   font-size: 0.875rem;
+  border-radius: 0.625rem;
 }
-.newsLetter-container h7 {
+.newsLetter-container h6 {
   font-weight: 800;
   font-size: 0.9rem;
 }
@@ -141,6 +150,7 @@ main {
   font-weight: 600;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .arrow-price {
@@ -182,7 +192,7 @@ main {
   font-size: 14px '';
   position: absolute;
   top: 43%;
-  left: 3%;
+  left: 4%;
   transform: translate(-50%, -50%);
   visibility: hidden;
   color: white;
@@ -192,7 +202,6 @@ main {
   visibility: visible;
 }
 
-/* Default state of the custom checkbox */
 .custom-checkbox {
   display: inline-block;
   width: 20px;
@@ -230,14 +239,14 @@ main {
   position: relative;
 }
 
-.arrowUp-icon1 {
+.arrowUp-icon.website-icon {
   font-weight: 600;
   font-size: 1rem;
   position: absolute;
   top: 15%;
   right: 0%;
 }
-.arrowUp-icon2 {
+.arrowUp-icon.marque-icon {
   font-weight: 600;
   font-size: 1rem;
   position: absolute;
@@ -267,10 +276,11 @@ main {
   display: flex;
   justify-content: space-between;
   margin-bottom: 1.5em;
+  position: relative;
 }
 
 .showing-laptops-container h2 {
-  flex: 0 0 32%;
+  flex: 0 0 62%;
 
   font-family: 'Poppins';
   font-style: normal;
@@ -333,9 +343,9 @@ main {
   letter-spacing: 0.00625rem;
 }
 
-.laptop-name-container span {
-  color: #3dd598;
+.laptop-name-container svg {
   font-size: 2rem;
+  color: #3dd598;
 }
 .laptop-info {
   margin-bottom: 0.5rem;
@@ -385,6 +395,7 @@ span {
   font-family: Roboto;
   font-weight: 500;
   letter-spacing: 0.00625rem;
+  align-self: self-start;
 }
 
 .marque-stock-container span {
@@ -422,10 +433,10 @@ span {
   letter-spacing: 0.00625rem;
   background-color: #242424;
   border: none;
-  appearance: none; /* Removes default dropdown arrow in most modern browsers */
-  margin-right: -1.5rem;
-  -webkit-appearance: none; /* Removes default dropdown arrow for older webkit browsers */
-  -moz-appearance: none; /* Removes default dropdown arrow for Firefox */
+  appearance: none;
+  margin-right: 2rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
 .sort-select p {
   color: #92929d;
@@ -448,6 +459,104 @@ span {
   font-size: 1.5rem;
 }
 
+.object-1 {
+  position: absolute;
+  width: 92.22025rem;
+  height: 29.06363rem;
+  transform: rotate(41.714deg);
+  background-image: linear-gradient(
+    155deg,
+    #e7a162 3.65%,
+    #3b6d47 6.25%,
+    #f0d981 47.4%,
+    #d3a082 100%
+  );
+  opacity: 0.1;
+  filter: blur(103px);
+  top: 300%;
+  left: 86%;
+}
+
+.object-2 {
+  position: absolute;
+  left: 0;
+  bottom: -62%;
+}
+
+.object-3 {
+  position: absolute;
+  left: 32%;
+  top: 20%;
+  z-index: -1;
+}
+
+.first-line,
+.second-line,
+.third-line,
+.fourth-line {
+  position: absolute;
+  z-index: -1;
+}
+
+.first-line {
+  left: 65%;
+}
+
+.second-line {
+  left: 70%;
+}
+
+.third-line {
+  left: 76%;
+}
+
+.fourth-line {
+  left: 82%;
+}
+.line-1,
+.line-2,
+.line-3,
+.line-4 {
+  position: absolute;
+  z-index: -1;
+}
+
+.line-1 {
+  top: -190%;
+  left: -9%;
+}
+.line-2 {
+  top: -190%;
+  left: -7%;
+}
+
+.line-3 {
+  top: -190%;
+  left: -5%;
+}
+
+.line-4 {
+  position: absolute;
+  top: -190%;
+  left: -3%;
+}
+
+.in-stock {
+  width: 44px;
+  height: 41px;
+}
+
+.hors-stock {
+  width: 44px;
+  height: 41px;
+}
+
+@media screen and (max-width: 1500px) {
+  .object-3 {
+    display: none;
+  }
+}
+
 @media screen and (max-width: 1300px) {
   .flex-results-1 {
     flex: 0 0 48%;
@@ -468,6 +577,17 @@ span {
 }
 
 @media screen and (max-width: 1000px) {
+  .first-line,
+  .second-line,
+  .third-line,
+  .fourth-line,
+  .line-1,
+  .line-2,
+  .line-3,
+  .line-4,
+  .object-2 {
+    display: none;
+  }
   .input-wrapper2 {
     width: 40%;
     font-size: 0.9em;
@@ -475,6 +595,10 @@ span {
 
   .search-wrapper button {
     width: 20%;
+  }
+
+  .arrow-icon {
+    top: 2%;
   }
 
   .main-container {
@@ -485,15 +609,11 @@ span {
   }
   .aside-flex-container {
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     margin-bottom: 1.5em;
   }
 
-  categories-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    position: relative;
+  .categories-container {
     margin-top: 0;
   }
   .aside-container {
@@ -516,11 +636,22 @@ span {
 }
 
 @media screen and (max-width: 700px) {
-  main {
+  .main-search {
     width: 93%;
   }
   .input-wrapper2 {
     font-size: 0.8em;
+  }
+  .showing-laptops-container h2 {
+    font-size: 16px;
+  }
+
+  .sort-select {
+    font-size: 1rem;
+  }
+
+  .sort-container p {
+    font-size: 0.9rem;
   }
 
   .aside-flex-container {
@@ -553,7 +684,7 @@ span {
 
   .showing-laptops-container h2 {
     width: 100%;
-    flex: 0 0 42%;
+    flex: 0 0 50%;
   }
 
   .showing-laptops-container {
@@ -641,6 +772,6 @@ span {
     width: 45%;
   }
   .checkbox-pc {
-    font-size: 0.55rem;
+    font-size: 0.65rem;
   }
 }

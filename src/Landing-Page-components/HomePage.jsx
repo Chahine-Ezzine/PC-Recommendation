@@ -1,22 +1,27 @@
-import React from 'react'
+import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import SearchMenu from './SearchMenu'
 import CarouselSection from './carousel-section'
 import Header from './header'
 import MainTitle from './MainTitle'
-import Footer from './Footer.jsx'
-import { useNavigate } from 'react-router-dom'
+import Footer from './Footer'
 
 const HomePage = () => {
   const navigate = useNavigate()
-  const [values, setValues] = React.useState([500, 3850])
 
-  React.useEffect(() => {
-    console.log('Updated values in HomePage:', values)
-  }, [values])
+  // Define state for price range
+  const [priceRange, setPriceRange] = useState([500, 3850])
 
+  // Log price updates for debugging purposes
+  useEffect(() => {
+    console.log('Updated price range in HomePage:', priceRange)
+  }, [priceRange])
+
+  // Function to handle navigation to the search page with the selected price range
   const navigateToSearchPage = () => {
-    navigate(`/search?minPrice=${values[0]}&maxPrice=${values[1]}`)
-    console.log('Navigating with:', values[0], values[1])
+    const [minPrice, maxPrice] = priceRange
+    navigate(`/search?minPrice=${minPrice}&maxPrice=${maxPrice}`)
+    console.log('Navigating with price range:', minPrice, maxPrice)
   }
 
   return (
@@ -25,8 +30,10 @@ const HomePage = () => {
       <div className="main-landing-page">
         <div className="ellipse-circle"></div>
         <MainTitle />
-        <SearchMenu setValues={setValues} />
-        <CarouselSection navigateToSearchPage={navigateToSearchPage} />
+        {/* Allow SearchMenu to update the price range */}
+        <SearchMenu setValues={setPriceRange} />
+        {/* Pass the price range to the CarouselSection for filtering or other purposes */}
+        <CarouselSection minPrice={priceRange[0]} maxPrice={priceRange[1]} />
       </div>
       <Footer />
     </section>

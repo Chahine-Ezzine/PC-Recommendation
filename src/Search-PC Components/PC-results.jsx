@@ -1,31 +1,32 @@
 import { laptopInfo } from '../data'
 import { BsThreeDots } from 'react-icons/bs'
 import { TbPointFilled } from 'react-icons/tb'
-import { useNavigate, useLocation } from 'react-router-dom'
-import { AiOutlineFileDone } from 'react-icons/ai'
+import { useNavigate } from 'react-router-dom'
 import React, { useContext, useState, useEffect } from 'react'
 import { LaptopContext } from '../LaptopContext'
 
-const PcResults = () => {
-  const location = useLocation()
-  const queryParams = new URLSearchParams(location.search)
-  let queryMinPrice = Number(queryParams.get('minPrice')) // Convert to Number
-  let queryMaxPrice = Number(queryParams.get('maxPrice')) // Convert to Number
+import { useSearch } from './SearchContext'
+import LinesSvg from './LinesSvg'
+import StockSvg from './stockSvg'
+import HorsStock from './HorsStock'
+import ObjectSvg from './objectSvg'
 
-  queryMinPrice = isNaN(queryMinPrice) ? 0 : queryMinPrice
-  queryMaxPrice = isNaN(queryMaxPrice) ? Infinity : queryMaxPrice
+const PcResults = () => {
+  const { searchData } = useSearch()
 
   const navigate = useNavigate()
   const [sortedLaptops, setSortedLaptops] = useState(laptopInfo)
   const { state, dispatch } = useContext(LaptopContext)
-  console.log('Query Params:', queryMinPrice, queryMaxPrice)
+  console.log('Original laptopInfo:', laptopInfo)
 
   useEffect(() => {
-    console.log('useEffect triggered')
-
     let filteredLaptops = laptopInfo.filter(
-      (laptop) => laptop.Price >= queryMinPrice && laptop.Price <= queryMaxPrice
+      (laptop) =>
+        laptop.Price >= searchData.minPrice &&
+        laptop.Price <= searchData.maxPrice &&
+        (!searchData.text || laptop.category === searchData.text)
     )
+    console.log('Filtered laptops:', filteredLaptops)
 
     switch (state.selectedSort) {
       case 'Brand A - Z':
@@ -34,41 +35,58 @@ const PcResults = () => {
       case 'Brand Z - A':
         filteredLaptops.sort((a, b) => b.brand.localeCompare(a.brand))
         break
-      case 'Price High to Low':
-        filteredLaptops.sort((a, b) => b.Price - a.Price)
-        break
-      case 'Price Low to High':
-        filteredLaptops.sort((a, b) => a.Price - b.Price)
+      case 'High to Low':
+        filteredLaptops.sort(
+          (a, b) => parseFloat(b.Price) - parseFloat(a.Price)
+        )
+      case 'Low to High':
+        filteredLaptops.sort(
+          (a, b) => parseFloat(a.Price) - parseFloat(b.Price)
+        )
         break
       case 'Best Value':
-        filteredLaptops.sort((a, b) => b.Score - a.Score)
+        filteredLaptops.sort(
+          (a, b) => parseFloat(b.Score) - parseFloat(a.Score)
+        )
+
         break
       default:
         break
     }
 
     setSortedLaptops(filteredLaptops)
-    console.log(filteredLaptops)
-  }, [state.selectedSort, queryMinPrice, queryMaxPrice])
+  }, [state.selectedSort, searchData])
 
   const handleLaptopClick = (laptop) => {
     dispatch({ type: 'SET_LAPTOP', payload: laptop })
-    navigate('/laptop-detail')
+    navigate('/laptop-detail', {
+      state: { selectedLaptop: laptop, searchData },
+    })
+  }
+  function LaptopIcon({ stock }) {
+    if (stock === 'En stock') {
+      return <StockSvg />
+    } else if (stock === 'Hors Stock') {
+      return <HorsStock />
+    } else {
+      return null
+    }
   }
 
   return (
     <>
-      {sortedLaptops.length ? (
+      <LinesSvg />
+      {sortedLaptops.length > 0 ? (
         sortedLaptops.map((laptop) => (
           <div className="flex-results-1">
             <div className="icon-container-results">
-              <img src={laptop.Image} />
+              <img src={laptop.Image} alt={`Image of ${laptop.Name}`} />
               <BsThreeDots />
             </div>
             <div className="laptop-name-container">
               <p>{laptop.Name}</p>
               <span>
-                <AiOutlineFileDone />
+                <LaptopIcon stock={laptop.Stock} />
               </span>
             </div>
             <p className="laptop-info">
@@ -103,7 +121,8 @@ const PcResults = () => {
           No laptops found within the specified price range and sort option.
         </p>
       )}
+      <ObjectSvg />
     </>
   )
 }
-export default PcResults
+export default React.memo(PcResults)

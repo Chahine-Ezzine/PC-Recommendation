@@ -29,13 +29,13 @@ const StyledSlider = styled(Slider)(({ theme }) => ({
   '& .MuiSlider-mark': {
     backgroundColor: 'black',
   },
-  '& .zeroLabel': {
+  '& .labelStyle': {
     color: '#FFFFFF',
     fontWeight: 'bold',
     fontFamily: 'Roboto',
     fontSize: 14,
   },
-  '& .sevenKLabel': {
+  '& .dimmed': {
     color: 'rgba(255, 255, 255, 0.7)',
     fontWeight: 'bold',
     fontFamily: 'Roboto',
@@ -43,9 +43,8 @@ const StyledSlider = styled(Slider)(({ theme }) => ({
   },
 }))
 
-const SearchMenu = ({ setValues }) => {
+const SearchMenu = ({ setValues = () => {} }) => {
   const [localValues, setLocalValues] = React.useState([500, 3850])
-  const localValuesRef = React.useRef(localValues)
   const minDistance = 500
 
   const handleChange = (event, newValue, activeThumb) => {
@@ -66,27 +65,21 @@ const SearchMenu = ({ setValues }) => {
     }
     console.log('New value from slider:', newValue)
   }
-
-  const marks = [
-    { value: 0, label: <span className="zeroLabel">0</span> },
-    { value: 7000, label: <span className="sevenKLabel">7000</span> },
-  ]
-  for (let i = 1000; i < 7000; i += 1000) {
-    let mark = { value: i }
-    marks.push(mark)
-  }
-  React.useEffect(() => {
-    // Update the ref
-    localValuesRef.current = localValues
-    console.log('Running useEffect with localValues:', localValues)
-
-    if (typeof setValues === 'function') {
-      console.log(
-        'Invoking setValues from SearchMenu with:',
-        localValuesRef.current
-      )
-      setValues(localValuesRef.current)
+  const generateMarks = () => {
+    let marks = [
+      { value: 0, label: <span className="labelStyle">0</span> },
+      { value: 7000, label: <span className="labelStyle dimmed">7000</span> },
+    ]
+    for (let i = 1000; i < 7000; i += 1000) {
+      marks.push({ value: i })
     }
+    return marks
+  }
+  const marks = generateMarks()
+
+  React.useEffect(() => {
+    console.log('Running useEffect with localValues:', localValues)
+    setValues(localValues)
   }, [localValues, setValues])
 
   return (

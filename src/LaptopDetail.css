@@ -32,6 +32,7 @@
   display: flex;
   flex-direction: column;
   gap: 1.75em;
+  position: relative;
 }
 
 .flex-details-1-price {
@@ -288,6 +289,28 @@
   border-radius: 0.7em;
   padding: 0.875em 2.8em;
   background: #ffd369;
+}
+
+.detail-line-1,
+.detail-line-2,
+.detail-line-3,
+.detail-line-4 {
+  position: absolute;
+  z-index: -1;
+}
+
+.detail-line-1 {
+  left: 10%;
+}
+.detail-line-2 {
+  left: 16%;
+}
+
+.detail-line-3 {
+  left: 22%;
+}
+.detail-line-4 {
+  left: 28%;
 }
 
 @media screen and (max-width: 1300px) {

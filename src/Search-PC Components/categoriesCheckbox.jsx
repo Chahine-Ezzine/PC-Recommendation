@@ -1,9 +1,22 @@
-import React, { useState } from 'react'
-import categories from '../data'
+import React, { useState, useEffect } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { HiOutlineChevronDown, HiOutlineChevronUp } from 'react-icons/hi'
+import { useSearch } from './SearchContext.jsx'
 
-const CategoriesCheckbox = () => {
+import category from '../data'
+const CategoriesCheckbox = ({ setSelectedCategory, selectedCategory }) => {
   const [showCheckboxes, setShowCheckboxes] = useState(false)
+
+  const location = useLocation()
+  const navigate = useNavigate()
+  const queryParams = new URLSearchParams(location.search)
+  const { searchData, setSearchData } = useSearch()
+
+  const handleCheckboxChange = (cat) => {
+    setSearchData((prevData) => ({ ...prevData, text: cat }))
+    queryParams.set('text', cat)
+    navigate(`?${queryParams.toString()}`)
+  }
 
   return (
     <>
@@ -16,19 +29,21 @@ const CategoriesCheckbox = () => {
           {showCheckboxes ? <HiOutlineChevronDown /> : <HiOutlineChevronUp />}
         </div>
       </div>
-
       {showCheckboxes &&
-        categories.map((category, index) => (
+        category.map((catItem, index) => (
           <div className="categories-checkbox" key={index}>
             <div className="checkbox-pc">
               <input
-                type="checkbox"
+                type="radio" // Change checkbox to radio
+                name="category" // Add a name to group radios
                 id={`checkbox-${index}`}
                 className="checkbox-input"
+                checked={searchData.text === catItem}
+                onChange={() => handleCheckboxChange(catItem)}
               />
               <label htmlFor={`checkbox-${index}`}>
                 <span className="custom-checkbox"></span>
-                <span className="checkbox-margin">{category}</span>
+                <span className="checkbox-margin">{catItem}</span>
                 <span className="square-23">23</span>
               </label>
             </div>
